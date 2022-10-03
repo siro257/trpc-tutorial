@@ -16,7 +16,7 @@ const Home: NextPage = () => {
 
   return (
     <div>
-      <Link href='/post/new'>Create Post</Link>
+      <Link href='/posts/new'>Create Post</Link>
     </div>
   );
 
