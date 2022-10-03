@@ -1,18 +1,17 @@
-import { TRPCError } from '@trpc/server';
 import { createPostSchema, getSinglePostSchema } from '../../schema/post.schema';
 import { createRouter } from '../createRouter';
+import * as trpc from '@trpc/server';
 
 export const postRouter = createRouter()
   .mutation('create-post', {
     input: createPostSchema,
     async resolve({ ctx, input }) {
       if (!ctx.user) {
-        new TRPCError({
+        new trpc.TRPCError({
           code: 'FORBIDDEN',
           message: 'Cannot create a post while logged out',
         });
       }
-
       const post = await ctx.prisma.post.create({
         data: {
           ...input,

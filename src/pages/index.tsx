@@ -19,8 +19,6 @@ const Home: NextPage = () => {
       <Link href='/posts/new'>Create Post</Link>
     </div>
   );
-
-  return <div>{JSON.stringify(data)}</div>;
 };
 
 export default Home;
